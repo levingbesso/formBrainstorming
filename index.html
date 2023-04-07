@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Document</title>
+    <style>
+       
+        input[type="text"], input[type="email"] {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            margin-bottom: 10px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+        }
+        .carac label, .radio input[type="radio"], .radio label {
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .carac label {
+            margin-right: 10px;
+        }
+        .corps, .gera, .stage {
+            margin-bottom: 20px;
+        }
+        .radio input[type="radio"] {
+            margin-right: 5px;
+        }
+        @media (min-width: 768px) {
+            .container {
+                width: 60%;
+            }
+            img {
+                display: block;
+                margin: 0 auto;
+                max-width: 100%;
+                height: auto;
+            }
+            button {
+                background-color: blue;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+            }
+
+        }
+    </style>
+</head>
+<body>
+   <img src="./images/BRAINSTORMING.jpg" alt="Brainstorming picture">
+   <div class="container">
+     <div class="head">
+      <h1>BRAINSTORMING BOOSTER Informatique & Communication</h1>
+     </div>
+   </div>
+   <div class="container corps">
+     <form method="POST" class="contact-form">
+        <div class="entreprise"> 
+            <label for="entreprise">Entreprise</label>
+            <input type="text" id="entreprise"  class="ent">
+            <label for="secteur">Secteur d'activité</label>
+            <input type="text" id="secteur" class="sect">
+        </div>
+        <label for="localisation">Localisation</label>
+        <input type="text" id="localisation" class="loc"> <br><br>
+        <div class="carac">
+            <label>Type de site web (vitrine ou e-commerce):</label>
+            <p><strong>NB:</strong> Choisissez un site e-commerce uniquement si vous etes sûr d'avoir un ordinateur et un systeme de paiement par carte de credit pour recevoir les commandes</p>
+            <input type="text" class="typ">
+            <br>
+            <label for="couleur">Couleur</label>
+            <input type="text" id="couleur" class="cou">
+        </div>
+        <div class="gera">
+            <label for="gerant">Gérant</label>
+            <input type="text" id="gerant" class="ger">
+            <label for="telephone-gerant">Contact du Gérant</label>
+            <input type="text" id="telephone-gerant" class="tel-ger">
+        </div>
+        <div class="stage">
+            <label for="stagiaire">Stagiaire Informaticien</label>
+            <input type="text" id="stagiaire" class="sta">
+            <label for="telephone-stagiaire">Contact du Stagiaire</label>
+            <input type="text" id="telephone-stagiaire" class="tel-sta">
+        </div>
+        <label for="email">Email de l'entreprise</label>
+        <input type="email" class="ema"><br><br>
+        <div class="produits">
+            <label>Saissiez la liste de vos produits/ Services principaux suivis de leur prix</label>
+            <input type="text" class="pro1"><br>
+            <input type="text" class="pro2"><br>
+            <input type="text" class="pro3"><br>
+            <input type="text" class="pro4"><br>
+        </div> <br><br>
+        <div class="lieux">
+            <label>Specifiez vos lieux de ventes si vous en avez</label>
+            <input type="text" class="lie1"><br>
+            <input type="text" class="lie2"><br>
+            <input type="text" class="lie3"><br>
+            <input type="text" class="lie4"><br>
+        </div>
+        <button class="blue-button"  type="submit">Envoyé</button>
+     </form>
+    </div>
+</body>
+
+
+<script src=
+"https://smtpjs.com/v3/smtp.js">
+</script>
+
+<script>
+const form = document.querySelector(".contact-form");
+form.addEventListener("submit", e => {
+e.preventDefault();
+let entreprise = document.querySelector(".entreprise .ent").value;
+let secteur = document.querySelector(" .entreprise .sect").value;
+let localisation = document.querySelector(".loc").value;
+let type = document.querySelector(".carac .typ").value;
+let couleur = document.querySelector(".carac .cou").value;
+let gerant= document.querySelector(".gera .ger").value;
+let telGerant= document.querySelector(".gera .tel-ger").value;
+let stagiaire = document.querySelector(".stage .sta").value;
+let telStagiaire = document.querySelector(".stage .tel-sta").value;
+let email = document.querySelector(".ema").value;
+let produit1 = document.querySelector(".produits .pro1").value;
+let produit2 = document.querySelector(".produits .pro2").value;
+let produit3 = document.querySelector(".produits .pro3").value;
+let produit4 = document.querySelector(".produits .pro4").value;
+let lieu1 = document.querySelector(".lieux .lie1").value;
+let lieu2 = document.querySelector(".lieux .lie2").value;
+let lieu3 = document.querySelector(".lieux .lie3").value;
+let lieu4 = document.querySelector(".lieux .lie4").value;
+
+
+
+
+
+
+document.querySelector(".contact-form").reset();
+
+sendEmail(entreprise, secteur, localisation, type, couleur, gerant, telGerant, stagiaire, telStagiaire, email, produit1, produit2, produit3, produit4, lieu1, lieu2, lieu3, lieu4);
+})
+function sendEmail(entreprise, secteur, localisation, type, couleur, gerant, telGerant, stagiaire, telStagiaire, email, produit1, produit2, produit3, produit4, lieu1, lieu2, lieu3, lieu4){
+Email.send({
+    
+  Host: "smtp.elasticemail.com", 
+  Username: "levingbesso1@gmail.com",
+  Password: "47B39981A689182EA8314B4434B519CCFF38",
+  To: "levingbesso2@gmail.com",
+  From: "levingbesso1@gmail.com",
+  Subject: `L'entreprise ${entreprise} vient de vous envoyer son formulaire d'inscription`,
+  Body: `Entreprise: ${entreprise} <br> Secteur d'activité: ${secteur} <br> Localisation: ${localisation} <br><br> Type de site: ${type} <br> Couleur: ${couleur} <br><br> Gerant: ${gerant}<br>Contact du gerant: ${telGerant} <br><br> Stagiaire: ${stagiaire} <br> Contact du stagiaire: ${telStagiaire} <br> <br>email de l'entreprise: ${email}  <br><br> Liste des produits: <br> produit1: ${produit1} <br> produit2: ${produit2} <br>  produit3: ${produit3} <br> produit4: ${produit4} <br><br>  Listes des lieux de ventes: <br> lieu1: ${lieu1} <br> lieu2: ${lieu2} <br> lieu3: ${lieu3} <br> lieu4: ${lieu4}`,
+
+}).then((success) => {
+ 
+  alert("message sent successfully. Please check the spam folder in your mail.");
+}).catch((error) => {
+    
+  alert("error sending message");
+})
+}
+</script>
+
+
